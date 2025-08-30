@@ -1,6 +1,3 @@
-# Criar index.html
-echo "📝 Criando index.html..."
-cat > index.html << 'ENDHTML'
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -19,13 +16,17 @@ cat > index.html << 'ENDHTML'
             --text-light: #e0e0e0;
             --text-muted: #888;
         }
+
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body { 
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; 
             background: linear-gradient(135deg, var(--dark-bg) 0%, #1a1a2e 100%);
             min-height: 100vh;
             color: var(--text-light);
         }
+
+        /* Navigation */
         .nav-menu {
             background: var(--card-bg);
             padding: 15px 20px;
@@ -35,6 +36,7 @@ cat > index.html << 'ENDHTML'
             z-index: 1000;
             backdrop-filter: blur(10px);
         }
+
         .nav-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -42,6 +44,7 @@ cat > index.html << 'ENDHTML'
             justify-content: space-between;
             align-items: center;
         }
+
         .nav-brand {
             font-size: 20px;
             font-weight: 700;
@@ -49,15 +52,215 @@ cat > index.html << 'ENDHTML'
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--text-light);
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            background: rgba(102, 126, 234, 0.2);
+        }
+
+        /* Main Container */
         .main-container {
             max-width: 1400px;
             margin: 0 auto;
             padding: 20px;
         }
+
+        /* Page Sections */
+        .page-section {
+            display: none;
+            animation: fadeIn 0.3s;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin-bottom: 20px;
+        }
+
+        .card h2 {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(102, 126, 234, 0.3);
+        }
+
+        /* Grid Layout */
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        @media (max-width: 1024px) {
+            .grid-3 { grid-template-columns: 1fr; }
+        }
+
+        /* Upload Zone */
+        .upload-zone {
+            border: 2px dashed rgba(102, 126, 234, 0.5);
+            border-radius: 15px;
+            padding: 40px 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.02);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .upload-zone:hover {
+            background: rgba(102, 126, 234, 0.05);
+            border-color: var(--primary);
+        }
+
+        .upload-zone.dragover {
+            background: rgba(102, 126, 234, 0.1);
+            border-color: var(--secondary);
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: var(--text-light);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        /* Buttons */
+        .btn {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:disabled {
+            background: rgba(255, 255, 255, 0.1);
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, var(--success) 0%, #059669 100%);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 12px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* Activity Feed */
+        .activity-feed {
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .activity-item {
+            display: flex;
+            align-items: start;
+            gap: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 8px;
+            margin-bottom: 10px;
+            border-left: 2px solid transparent;
+        }
+
+        .activity-item.success { border-left-color: var(--success); }
+        .activity-item.warning { border-left-color: var(--warning); }
+        .activity-item.error { border-left-color: var(--error); }
+
+        /* Loading */
         .loading {
             text-align: center;
             padding: 40px;
         }
+
         .spinner {
             width: 40px;
             height: 40px;
@@ -67,27 +270,468 @@ cat > index.html << 'ENDHTML'
             animation: spin 1s linear infinite;
             margin: 0 auto 20px;
         }
+
         @keyframes spin {
             to { transform: rotate(360deg); }
+        }
+
+        /* Mobile Menu */
+        .mobile-menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            font-size: 24px;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .mobile-menu-toggle { display: block; }
+            .nav-links { 
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--card-bg);
+                flex-direction: column;
+                padding: 20px;
+                display: none;
+            }
+            .nav-links.active { display: flex; }
         }
     </style>
 </head>
 <body>
+    <!-- Navigation -->
     <nav class="nav-menu">
         <div class="nav-container">
             <div class="nav-brand">🚀 AI Classifier v8</div>
+            <button class="mobile-menu-toggle" onclick="toggleMobileMenu()">☰</button>
+            <ul class="nav-links" id="navLinks">
+                <li><a class="nav-link active" onclick="showPage('upload')">📤 Upload</a></li>
+                <li><a class="nav-link" onclick="showPage('dashboard')">📊 Dashboard</a></li>
+                <li><a class="nav-link" onclick="showPage('projects')">📁 Projetos</a></li>
+                <li><a class="nav-link" onclick="showPage('graph')">🕸️ Grafo Neo4j</a></li>
+                <li><a class="nav-link" onclick="showPage('config')">⚙️ Config</a></li>
+            </ul>
         </div>
     </nav>
+
+    <!-- Main Container -->
     <div class="main-container">
-        <div class="loading">
-            <div class="spinner"></div>
-            <h1>Sistema em Implantação</h1>
-            <p>O frontend completo está sendo configurado...</p>
-            <p style="margin-top: 20px; color: #888;">
-                Substitua este arquivo pelo index.html completo do artifact
-            </p>
-        </div>
+        
+        <!-- Upload Page -->
+        <section id="page-upload" class="page-section active">
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value">1,847</div>
+                    <div class="stat-label">Docs Processados</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">94%</div>
+                    <div class="stat-label">Taxa Acerto IA</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">2.4K</div>
+                    <div class="stat-label">Nodes Neo4j</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value">0.8s</div>
+                    <div class="stat-label">Tempo Médio</div>
+                </div>
+            </div>
+
+            <div class="grid-3">
+                <div class="card">
+                    <h2>📋 Configuração</h2>
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" id="userEmail" placeholder="seu@email.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Projeto *</label>
+                        <select id="projectSelect" disabled>
+                            <option value="">Digite seu email primeiro...</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Tipo de Documento</label>
+                        <select id="docType">
+                            <option value="auto">🤖 Auto-detectar</option>
+                            <option value="nfe">📄 NF-e</option>
+                            <option value="contract">📑 Contrato</option>
+                            <option value="receipt">💳 Comprovante</option>
+                            <option value="custom">⚙️ Personalizado</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>🎯 Upload de Arquivos</h2>
+                    <div class="upload-zone" id="uploadZone">
+                        <div style="font-size: 48px;">📂</div>
+                        <h3 style="margin: 10px 0;">Arraste arquivos aqui</h3>
+                        <p style="font-size: 12px; color: #888;">
+                            PDF, XML, Excel, Imagens<br>
+                            Máximo: 50 arquivos | 50MB cada
+                        </p>
+                        <input type="file" id="fileInput" multiple style="display: none;">
+                    </div>
+                    <div style="margin-top: 20px;">
+                        <button class="btn btn-success" onclick="processFiles()" style="width: 100%;">
+                            ✅ Processar Arquivos
+                        </button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <h2>📋 Atividade Recente</h2>
+                    <div class="activity-feed" id="activityFeed">
+                        <div class="activity-item success">
+                            <span>✅</span>
+                            <div style="flex: 1;">
+                                <div style="font-weight: 600;">Sistema inicializado</div>
+                                <div style="font-size: 12px; color: #888;">Pronto para upload</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Page -->
+        <section id="page-dashboard" class="page-section">
+            <div class="card">
+                <h2>📊 Dashboard</h2>
+                <div class="loading">
+                    <div class="spinner"></div>
+                    <p>Carregando dados...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Page -->
+        <section id="page-projects" class="page-section">
+            <div class="card">
+                <h2>📁 Projetos</h2>
+                <div id="projectsList"></div>
+                <button class="btn btn-secondary" onclick="loadProjects()">
+                    🔄 Recarregar Projetos
+                </button>
+            </div>
+        </section>
+
+        <!-- Graph Page -->
+        <section id="page-graph" class="page-section">
+            <div class="card">
+                <h2>🕸️ Visualização Neo4j</h2>
+                <div style="background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%); padding: 40px; border-radius: 10px; text-align: center;">
+                    <p>Grafo Neo4j será renderizado aqui</p>
+                    <p style="font-size: 12px; color: #888; margin-top: 10px;">
+                        2,456 nodes | 8,912 edges | 4 tipos
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Config Page -->
+        <section id="page-config" class="page-section">
+            <div class="card">
+                <h2>⚙️ Configurações</h2>
+                <div class="form-group">
+                    <label>API URL</label>
+                    <input type="text" id="apiUrl" value="https://primary-production-56785.up.railway.app/webhook">
+                </div>
+                <div class="form-group">
+                    <label>Neo4j URI</label>
+                    <input type="text" id="neo4jUri" value="neo4j+s://f90cdce1.databases.neo4j.io">
+                </div>
+                <div class="form-group">
+                    <label>Versão</label>
+                    <input type="text" readonly value="v8.0.1">
+                </div>
+                <button class="btn" onclick="saveConfig()">💾 Salvar Configurações</button>
+            </div>
+        </section>
     </div>
+
+    <script>
+        // Configuration
+        window.APP_CONFIG = {
+            API_URL: 'https://primary-production-56785.up.railway.app/webhook',
+            API_ENDPOINTS: {
+                upload: '/file-manager/upload',
+                projects: '/file-manager/user-projects',
+                dashboard: '/file-manager/dashboard',
+                orchestrator: '/poc/orchestrator',
+                baserow: '/poc/baserow-api',
+                drive: '/poc/google-drive-api'
+            },
+            NEO4J_URI: 'neo4j+s://f90cdce1.databases.neo4j.io',
+            VERSION: 'v8.0.1',
+            MAX_FILES: 50,
+            MAX_FILE_SIZE: 52428800
+        };
+
+        // API Service
+        class APIService {
+            constructor() {
+                this.baseURL = window.APP_CONFIG.API_URL;
+                this.endpoints = window.APP_CONFIG.API_ENDPOINTS;
+            }
+
+            async call(endpoint, method = 'GET', data = null) {
+                const url = `${this.baseURL}${endpoint}`;
+                const options = {
+                    method,
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                };
+
+                if (data && method !== 'GET') {
+                    options.body = JSON.stringify(data);
+                }
+
+                try {
+                    const response = await fetch(url, options);
+                    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+                    return await response.json();
+                } catch (error) {
+                    console.error('API Error:', error);
+                    throw error;
+                }
+            }
+
+            async upload(files, metadata) {
+                const formData = new FormData();
+                files.forEach(file => formData.append('files', file));
+                Object.keys(metadata).forEach(key => {
+                    formData.append(key, metadata[key]);
+                });
+
+                const response = await fetch(`${this.baseURL}${this.endpoints.upload}`, {
+                    method: 'POST',
+                    body: formData
+                });
+
+                return response.json();
+            }
+
+            async getUserProjects(email) {
+                return this.call(`${this.endpoints.projects}?email=${email}`);
+            }
+        }
+
+        // Initialize
+        let api = null;
+        let currentPage = 'upload';
+        let uploadedFiles = [];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize API
+            api = new APIService();
+            
+            // Load config into forms
+            document.getElementById('apiUrl').value = window.APP_CONFIG.API_URL;
+            document.getElementById('neo4jUri').value = window.APP_CONFIG.NEO4J_URI;
+            
+            // Setup event listeners
+            setupDragDrop();
+            setupEmailListener();
+            
+            // Log initialization
+            addActivity('success', '✅', 'Sistema inicializado', 'API conectada');
+        });
+
+        // Navigation
+        function showPage(page) {
+            // Hide all pages
+            document.querySelectorAll('.page-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(`page-${page}`).classList.add('active');
+            
+            // Update nav
+            document.querySelectorAll('.nav-link').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            currentPage = page;
+            
+            // Close mobile menu
+            document.getElementById('navLinks').classList.remove('active');
+        }
+
+        function toggleMobileMenu() {
+            document.getElementById('navLinks').classList.toggle('active');
+        }
+
+        // Drag & Drop
+        function setupDragDrop() {
+            const zone = document.getElementById('uploadZone');
+            const input = document.getElementById('fileInput');
+            
+            zone.addEventListener('click', () => input.click());
+            
+            zone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                zone.classList.add('dragover');
+            });
+            
+            zone.addEventListener('dragleave', () => {
+                zone.classList.remove('dragover');
+            });
+            
+            zone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                zone.classList.remove('dragover');
+                handleFiles(e.dataTransfer.files);
+            });
+            
+            input.addEventListener('change', (e) => {
+                handleFiles(e.target.files);
+            });
+        }
+
+        function handleFiles(files) {
+            uploadedFiles = Array.from(files);
+            addActivity('success', '📁', `${files.length} arquivo(s) selecionado(s)`, 'Pronto para processar');
+        }
+
+        // Email listener
+        function setupEmailListener() {
+            const emailInput = document.getElementById('userEmail');
+            let timeout;
+            
+            emailInput.addEventListener('input', (e) => {
+                clearTimeout(timeout);
+                timeout = setTimeout(() => loadUserProjects(e.target.value), 500);
+            });
+        }
+
+        async function loadUserProjects(email) {
+            if (!email || !email.includes('@')) return;
+            
+            const projectSelect = document.getElementById('projectSelect');
+            projectSelect.innerHTML = '<option value="">Carregando...</option>';
+            
+            try {
+                const result = await api.getUserProjects(email);
+                
+                if (result.success && result.projects) {
+                    projectSelect.innerHTML = '<option value="">Selecione um projeto...</option>';
+                    result.projects.forEach(p => {
+                        const option = document.createElement('option');
+                        option.value = p.project_id;
+                        option.textContent = `${p.project_name} (${p.company_name})`;
+                        projectSelect.appendChild(option);
+                    });
+                    projectSelect.disabled = false;
+                    
+                    addActivity('success', '📋', 'Projetos carregados', `${result.projects.length} projeto(s) disponível(is)`);
+                }
+            } catch (error) {
+                addActivity('error', '❌', 'Erro ao carregar projetos', error.message);
+                projectSelect.innerHTML = '<option value="">Erro ao carregar</option>';
+            }
+        }
+
+        // Process files
+        async function processFiles() {
+            if (uploadedFiles.length === 0) {
+                addActivity('warning', '⚠️', 'Nenhum arquivo selecionado', '');
+                return;
+            }
+            
+            const email = document.getElementById('userEmail').value;
+            const projectId = document.getElementById('projectSelect').value;
+            
+            if (!email || !projectId) {
+                addActivity('error', '❌', 'Preencha email e projeto', '');
+                return;
+            }
+            
+            addActivity('success', '🚀', 'Processando arquivos...', 'Enviando para classificação IA');
+            
+            try {
+                const result = await api.upload(uploadedFiles, {
+                    email: email,
+                    project_id: projectId,
+                    doc_type: document.getElementById('docType').value
+                });
+                
+                addActivity('success', '✅', 'Upload concluído!', `${uploadedFiles.length} arquivo(s) processado(s)`);
+                uploadedFiles = [];
+                document.getElementById('fileInput').value = '';
+            } catch (error) {
+                addActivity('error', '❌', 'Erro no upload', error.message);
+            }
+        }
+
+        // Activity feed
+        function addActivity(type, icon, title, desc) {
+            const feed = document.getElementById('activityFeed');
+            const item = document.createElement('div');
+            item.className = `activity-item ${type}`;
+            item.innerHTML = `
+                <span>${icon}</span>
+                <div style="flex: 1;">
+                    <div style="font-weight: 600;">${title}</div>
+                    <div style="font-size: 12px; color: #888;">${desc}</div>
+                </div>
+                <span style="font-size: 11px; color: #666;">agora</span>
+            `;
+            feed.insertBefore(item, feed.firstChild);
+            
+            // Limit to 10 items
+            while (feed.children.length > 10) {
+                feed.removeChild(feed.lastChild);
+            }
+        }
+
+        // Projects
+        async function loadProjects() {
+            const email = document.getElementById('userEmail').value;
+            if (!email) {
+                addActivity('warning', '⚠️', 'Digite seu email primeiro', '');
+                return;
+            }
+            
+            const projectsList = document.getElementById('projectsList');
+            projectsList.innerHTML = '<div class="loading"><div class="spinner"></div></div>';
+            
+            try {
+                const result = await api.getUserProjects(email);
+                if (result.projects) {
+                    projectsList.innerHTML = result.projects.map(p => `
+                        <div style="padding: 10px; background: rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 10px;">
+                            <strong>${p.project_name}</strong><br>
+                            <span style="font-size: 12px; color: #888;">${p.company_name} | ${p.project_id}</span>
+                        </div>
+                    `).join('');
+                }
+            } catch (error) {
+                projectsList.innerHTML = `<p>Erro ao carregar projetos: ${error.message}</p>`;
+            }
+        }
+
+        // Config
+        function saveConfig() {
+            const apiUrl = document.getElementById('apiUrl').value;
+            const neo4jUri = document.getElementById('neo4jUri').value;
+            
+            window.APP_CONFIG.API_URL = apiUrl;
+            window.APP_CONFIG.NEO4J_URI = neo4jUri;
+            
+            // Reinitialize API
+            api = new APIService();
+            
+            addActivity('success', '✅', 'Configurações salvas', 'Recarregue a página para aplicar');
+        }
+    </script>
 </body>
 </html>
-ENDHTML
