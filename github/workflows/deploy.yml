@@ -1,18 +1,3 @@
-### 🚀 Deploy
-
-Deploy automático via GitHub Actions ao fazer push para o branch main.
-
-### 📄 Licença
-
-Proprietário - Uptax © 2025
-
----
-**Última atualização**: 30/08/2025
-ENDMD
-
-# Criar GitHub Actions workflow
-echo "📝 Criando GitHub Actions workflow..."
-cat > .github/workflows/deploy.yml << 'ENDYML'
 name: Deploy to GitHub Pages
 
 on:
@@ -50,4 +35,3 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
-ENDYML
