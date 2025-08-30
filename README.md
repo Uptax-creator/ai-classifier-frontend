@@ -28,4 +28,4 @@
         └── deploy.yml  # GitHub Actions para deploy
 \`\`\`
 
-<!-- deploy trigger -->
+<!-- Deploy triggered: 30/08/2025 -->
