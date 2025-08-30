@@ -27,3 +27,5 @@
     └── workflows/
         └── deploy.yml  # GitHub Actions para deploy
 \`\`\`
+
+<!-- deploy trigger -->
